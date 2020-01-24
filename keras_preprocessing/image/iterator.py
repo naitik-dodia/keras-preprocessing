@@ -227,7 +227,8 @@ class BatchFromFilesMixin():
             img = load_img(filepaths[j],
                            color_mode=self.color_mode,
                            target_size=self.target_size,
-                           interpolation=self.interpolation)
+                           interpolation=self.interpolation,
+                           preprocessing_function=self.image_data_generator.load_processing_function)
             x = img_to_array(img, data_format=self.data_format)
             # Pillow images should be closed after `load_img`,
             # but not PIL images.

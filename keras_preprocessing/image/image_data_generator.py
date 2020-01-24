@@ -271,6 +271,7 @@ class ImageDataGenerator(object):
                  vertical_flip=False,
                  rescale=None,
                  preprocessing_function=None,
+                 load_processing_function = None,
                  data_format='channels_last',
                  validation_split=0.0,
                  interpolation_order=1,
@@ -294,6 +295,7 @@ class ImageDataGenerator(object):
         self.vertical_flip = vertical_flip
         self.rescale = rescale
         self.preprocessing_function = preprocessing_function
+        self.load_processing_function = load_processing_function
         self.dtype = dtype
         self.interpolation_order = interpolation_order
 

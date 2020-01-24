@@ -77,7 +77,7 @@ def save_img(path,
 
 
 def load_img(path, grayscale=False, color_mode='rgb', target_size=None,
-             interpolation='nearest'):
+             interpolation='nearest', preprocessing_function = None):
     """Loads an image into PIL format.
 
     # Arguments
@@ -125,6 +125,12 @@ def load_img(path, grayscale=False, color_mode='rgb', target_size=None,
                 img = img.convert('RGB')
         else:
             raise ValueError('color_mode must be "grayscale", "rgb", or "rgba"')
+
+        if preprocessing_function is not None:
+            img_arr = img_to_array(img)
+            img_arr = preprocessing_function(img_arr)
+            img = array_to_img(img_arr)
+
         if target_size is not None:
             width_height_tuple = (target_size[1], target_size[0])
             if img.size != width_height_tuple:
